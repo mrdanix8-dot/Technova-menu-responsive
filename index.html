@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova - Menú Responsive</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- Encabezado Principal de la Página -->
+    <header class="header">
+        <!-- Logo de la empresa ficticia TechNova -->
+        <a href="/" class="logo">TechNova</a>
+
+        <!-- PARTE 1: Checkbox oculto para controlar la apertura del menú sin JavaScript -->
+        <input type="checkbox" id="toggle-menu" class="toggle-menu-input">
+
+        <!-- PARTE 1 & 4: Botón hamburguesa accesible con 3 líneas (span) para animación -->
+        <label for="toggle-menu" class="hamburguesa" aria-label="Abrir menú de navegación">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <!-- PARTE 1 & 2: Menú de navegación principal -->
+        <nav class="nav-mobile">
+            <a href="/">Inicio</a>
+            <a href="/productos">Productos</a>
+            
+            <!-- PARTE 2: Implementación de submenú responsive para la opción 'Servicios' -->
+            <div class="menu-item-dropdown">
+                <!-- Checkbox interno para controlar el despliegue del submenú en móviles -->
+                <input type="checkbox" id="toggle-submenu" class="toggle-submenu-input">
+                <label for="toggle-submenu" class="dropdown-label">
+                    Servicios <span class="flecha">▾</span>
+                </label>
+                <!-- Opciones del submenú -->
+                <div class="submenu">
+                    <a href="/servicios/desarrollo">Desarrollo Web</a>
+                    <a href="/servicios/ciberseguridad">Ciberseguridad</a>
+                    <a href="/servicios/cloud">Servicios Cloud</a>
+                </div>
+            </div>
+
+            <a href="/blog">Blog</a>
+            
+            <!-- PARTE 2: Agregadas 2 opciones nuevas al menú principal -->
+            <a href="/nosotros">Nosotros</a>
+            <a href="/contacto">Contacto</a>
+        </nav>
+    </header>
+
+</body>
+</html>
