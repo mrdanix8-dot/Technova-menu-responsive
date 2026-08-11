@@ -1,103 +1,104 @@
-/* ==========================================================================
-   PARTE 3: Identidad Visual - Empresa Ficticia: "TechNova"
-   ========================================================================== */
-:root {
-    --color-primario: #0a192f;    /* Azul Oscuro Profundo (Fondo Header) */
-    --color-secundario: #64ffda;  /* Azul Cyan / Celeste (Acentos y Hover) */
-    --color-texto: #e6f1ff;       /* Blanco/Azul claro para legibilidad */
-    --color-hover-bg: #112240;    /* Azul intermedio para interacción */
-    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-* {
+/* — Reset Básico — */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 body {
-    font-family: var(--fuente-principal);
-    background-color: #0b0f19;
-    color: var(--color-texto);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #e5e7eb; /* Texto claro */
+    line-height: 1.6;
+    background-color: #0f1117; /* Fondo oscuro principal */
 }
 
-/* --- CABECERA (HEADER) --- */
-.header {
-    background-color: var(--color-primario);
+/* — Contenedor Principal — */
+.contenedor {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor {
+        padding: 0 2rem;
+    }
+}
+
+/* — Cabecera y Menú Navegación — */
+.cabecera {
+    background: #161a23; /* Encabezado oscuro */
+    border-bottom: 1px solid #2a2f3d;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.cabecera-interior {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    justify-content: space-between;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-    color: var(--color-secundario);
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
+    color: #e63946; /* Rojo vibrante */
     text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   PARTE 2: Configuración del Checkbox e Icono Hamburguesa
-   ========================================================================== */
-
-/* Ocultar los checkboxes pero mantener su funcionalidad activable por label */
+/* Ocultar checkboxes controladores */
 .toggle-menu-input,
 .toggle-submenu-input {
     display: none;
 }
 
-/* Construcción del botón hamburguesa con 3 líneas */
+/* Botón Hamburguesa (Móvil) */
 .hamburguesa {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
     cursor: pointer;
-    padding: 0.5rem;
-    z-index: 10;
+    z-index: 101;
 }
 
 .hamburguesa span {
     display: block;
-    width: 26px;
+    width: 100%;
     height: 3px;
-    background-color: var(--color-texto);
+    background-color: #e5e7eb;
     border-radius: 3px;
-    /* PARTE 4: Transición suave para la animación */
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* ==========================================================================
-   PARTE 4: Animación del Botón Hamburguesa al desplegar
-   ========================================================================== */
-
-/* Cambio de color de las líneas a color secundario (Cyan) */
-.toggle-menu-input:checked ~ .hamburguesa span {
-    background-color: var(--color-secundario);
+/* Animación del Botón Hamburguesa al activar */
+.toggle-menu-input:checked + .hamburguesa span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+    background-color: #e63946;
 }
 
-/* Rotación de la primera línea (Parte superior de la X) */
-.toggle-menu-input:checked ~ .hamburguesa span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-/* Desaparición de la línea central */
-.toggle-menu-input:checked ~ .hamburguesa span:nth-child(2) {
+.toggle-menu-input:checked + .hamburguesa span:nth-child(2) {
     opacity: 0;
 }
 
-/* Rotación de la tercera línea (Parte inferior de la X) */
-.toggle-menu-input:checked ~ .hamburguesa span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+.toggle-menu-input:checked + .hamburguesa span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+    background-color: #e63946;
 }
 
-/* ==========================================================================
-   PARTE 2: Menú Responsive y Submenú en MÓVIL (< 768px)
-   ========================================================================== */
-
-/* Menú oculto inicialmente en dispositivos móviles */
+/* Menú de Navegación (Móvil First) */
 .nav-mobile {
     display: none;
     flex-direction: column;
@@ -105,86 +106,93 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--color-primario);
-    border-top: 1px solid var(--color-hover-bg);
+    background: #161a23;
+    padding: 1rem;
+    border-bottom: 1px solid #2a2f3d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    gap: 0.25rem;
 }
 
-/* Mostrar menú móvil cuando el checkbox está marcado */
+/* Abrir menú al marcar checkbox */
 .toggle-menu-input:checked ~ .nav-mobile {
     display: flex;
 }
 
 .nav-mobile a,
 .dropdown-label {
-    padding: 1rem 1.5rem;
-    color: var(--color-texto);
+    padding: 0.75rem 1rem;
     text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--color-hover-bg);
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+    display: block;
+    transition: background 0.15s, color 0.15s;
 }
 
 .nav-mobile a:hover,
 .dropdown-label:hover {
-    background-color: var(--color-hover-bg);
-    color: var(--color-secundario);
+    background: #212634;
+    color: #e63946;
 }
 
-/* Submenú en Móvil */
+/* Estilos de Submenú Desplegable */
+.menu-item-dropdown {
+    position: relative;
+}
+
+.dropdown-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flecha {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
 .submenu {
     display: none;
-    background-color: #06101e;
     flex-direction: column;
+    padding-left: 1rem;
+    background: #11141d;
+    border-radius: 6px;
+    margin-top: 0.25rem;
 }
 
 .submenu a {
-    padding-left: 2.5rem; /* Indentación visual para jerarquía */
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
 }
 
-/* Desplegar submenú cuando su checkbox específico se activa */
+/* Abrir submenú al marcar checkbox interno */
 .toggle-submenu-input:checked ~ .submenu {
     display: flex;
 }
 
-/* Rotación de la flecha al abrir el submenú */
 .toggle-submenu-input:checked ~ .dropdown-label .flecha {
     transform: rotate(180deg);
-    transition: transform 0.3s ease;
 }
 
-/* ==========================================================================
-   PARTE 2: Menú Visible y Horizontal en ESCRITORIO (>= 768px)
-   ========================================================================== */
+/* Navegación para Escritorio (Desktop >= 768px) */
 @media (min-width: 768px) {
-    /* Ocultar icono hamburguesa en pantallas medianas y grandes */
     .hamburguesa {
         display: none;
     }
 
-    /* Mostrar menú horizontalmente */
     .nav-mobile {
         display: flex !important;
         position: static;
         flex-direction: row;
         width: auto;
-        border-top: none;
+        padding: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
         align-items: center;
-    }
-
-    .nav-mobile a,
-    .dropdown-label {
-        border-bottom: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-    }
-
-    /* Submenú Flotante para Escritorio */
-    .menu-item-dropdown {
-        position: relative;
+        gap: 0.25rem;
     }
 
     .submenu {
@@ -192,17 +200,146 @@ body {
         top: 100%;
         left: 0;
         min-width: 200px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        border-radius: 4px;
-        overflow: hidden;
+        background: #161a23;
+        border: 1px solid #2a2f3d;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        padding: 0.5rem;
+        margin-top: 0;
     }
 
-    .submenu a {
-        padding-left: 1rem;
-    }
-
-    /* En escritorio, desplegar al pasar el cursor (:hover) */
-    .menu-item-dropdown:hover .submenu {
+    .menu-item-dropdown:hover .submenu,
+    .toggle-submenu-input:checked ~ .submenu {
         display: flex;
     }
+
+    .menu-item-dropdown:hover .flecha {
+        transform: rotate(180deg);
+    }
+}
+
+/* — Hero Section — */
+.hero {
+    background: linear-gradient(135deg, #1f080a 0%, #11141d 50%, #800f1c 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: clamp(3rem, 10vw, 6rem) 1rem;
+    border-bottom: 1px solid #2a2f3d;
+}
+
+.hero h1 {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #d1d5db;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.btn-hero {
+    display: inline-block;
+    background: #e63946;
+    color: #ffffff;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: transform 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+.btn-hero:hover {
+    background-color: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* — Sección de Servicios / Tarjetas — */
+.seccion {
+    padding: clamp(2rem, 6vw, 5rem) 0;
+}
+
+.seccion-titulo {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.seccion-titulo h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 0.5rem;
+    color: #f3f4f6;
+}
+
+.seccion-titulo p {
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tarjeta {
+    background: #161a23;
+    border: 1px solid #2a2f3d;
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.tarjeta:hover {
+    border-color: #e63946;
+    box-shadow: 0 4px 20px rgba(230, 57, 70, 0.15);
+    transform: translateY(-2px);
+}
+
+.tarjeta-icono {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tarjeta h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #f9fafb;
+}
+
+.tarjeta p {
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+/* — Footer — */
+.pie {
+    background: #090a0f;
+    border-top: 1px solid #1f2430;
+    color: #6b7280;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.875rem;
+}
+
+.pie a {
+    color: #e63946;
+    text-decoration: none;
+}
+
+.pie a:hover {
+    color: #f87171;
+    text-decoration: underline;
 }

@@ -3,53 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNova - Menú Responsive</title>
+    <title>TechNova - Página Responsive Modo Oscuro</title>
+    <!-- Vinculación del archivo CSS externo -->
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <!-- Encabezado Principal de la Página -->
-    <header class="header">
-        <!-- Logo de la empresa ficticia TechNova -->
-        <a href="/" class="logo">TechNova</a>
+    <!-- Encabezado con Menú Responsive sin JavaScript -->
+    <header class="cabecera">
+        <div class="contenedor cabecera-interior">
+            <!-- Logo TechNova -->
+            <a href="/" class="logo">TechNova</a>
 
-        <!-- PARTE 1: Checkbox oculto para controlar la apertura del menú sin JavaScript -->
-        <input type="checkbox" id="toggle-menu" class="toggle-menu-input">
+            <!-- Checkbox oculto para abrir/cerrar el menú hamburguesa -->
+            <input type="checkbox" id="toggle-menu" class="toggle-menu-input">
 
-        <!-- PARTE 1 & 4: Botón hamburguesa accesible con 3 líneas (span) para animación -->
-        <label for="toggle-menu" class="hamburguesa" aria-label="Abrir menú de navegación">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+            <!-- Botón hamburguesa -->
+            <label for="toggle-menu" class="hamburguesa" aria-label="Abrir menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-        <!-- PARTE 1 & 2: Menú de navegación principal -->
-        <nav class="nav-mobile">
-            <a href="/">Inicio</a>
-            <a href="/productos">Productos</a>
-            
-            <!-- PARTE 2: Implementación de submenú responsive para la opción 'Servicios' -->
-            <div class="menu-item-dropdown">
-                <!-- Checkbox interno para controlar el despliegue del submenú en móviles -->
-                <input type="checkbox" id="toggle-submenu" class="toggle-submenu-input">
-                <label for="toggle-submenu" class="dropdown-label">
-                    Servicios <span class="flecha">▾</span>
-                </label>
-                <!-- Opciones del submenú -->
-                <div class="submenu">
-                    <a href="/servicios/desarrollo">Desarrollo Web</a>
-                    <a href="/servicios/ciberseguridad">Ciberseguridad</a>
-                    <a href="/servicios/cloud">Servicios Cloud</a>
+            <!-- Menú de navegación principal -->
+            <nav class="nav-mobile">
+                <a href="/">Inicio</a>
+                <a href="/productos">Productos</a>
+                
+                <!-- Submenú desplegable para 'Servicios' -->
+                <div class="menu-item-dropdown">
+                    <input type="checkbox" id="toggle-submenu" class="toggle-submenu-input">
+                    <label for="toggle-submenu" class="dropdown-label">
+                        Servicios <span class="flecha">▾</span>
+                    </label>
+                    <div class="submenu">
+                        <a href="/servicios/desarrollo">Desarrollo Web</a>
+                        <a href="/servicios/ciberseguridad">Ciberseguridad</a>
+                        <a href="/servicios/cloud">Servicios Cloud</a>
+                    </div>
                 </div>
-            </div>
 
-            <a href="/blog">Blog</a>
-            
-            <!-- PARTE 2: Agregadas 2 opciones nuevas al menú principal -->
-            <a href="/nosotros">Nosotros</a>
-            <a href="/contacto">Contacto</a>
-        </nav>
+                <a href="/blog">Blog</a>
+                <a href="/nosotros">Nosotros</a>
+                <a href="/contacto">Contacto</a>
+            </nav>
+        </div>
     </header>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+        <h1>Diseño responsive desde cero</h1>
+        <p>Una página que se ve perfecta en cualquier dispositivo, escrita solo con HTML y CSS puro.</p>
+        <a href="#" class="btn-hero">Empezar ahora</a>
+    </section>
+
+    <!-- Sección de Servicios / Tarjetas Grid -->
+    <section class="seccion">
+        <div class="contenedor">
+            <div class="seccion-titulo">
+                <h2>Nuestros servicios</h2>
+                <p>Todo lo que necesitas en un solo lugar</p>
+            </div>
+            <div class="grid">
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">🎨</div>
+                    <h3>Diseño UI</h3>
+                    <p>Interfaces atractivas y centradas en el usuario para cualquier plataforma.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">⚡</div>
+                    <h3>Rendimiento</h3>
+                    <p>Optimización de velocidad y tiempos de carga para mejorar la experiencia.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">📱</div>
+                    <h3>Mobile First</h3>
+                    <p>Diseñamos pensando primero en el móvil, luego escalamos al escritorio.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">🔒</div>
+                    <h3>Seguridad</h3>
+                    <p>Buenas prácticas de seguridad integradas desde el inicio del proyecto.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">♿</div>
+                    <h3>Accesibilidad</h3>
+                    <p>Sitios usables por todas las personas, independientemente de sus capacidades.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">📈</div>
+                    <h3>SEO técnico</h3>
+                    <p>Estructura semántica y rendimiento optimizado para los motores de búsqueda.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="pie">
+        <p>© 2026 TechNova. Hecho con HTML y CSS puro. <a href="#">Política de privacidad</a></p>
+    </footer>
 
 </body>
 </html>
